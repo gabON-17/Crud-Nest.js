@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
 import { MessagesService } from './messages.service';
 
 @Controller('messages')
@@ -15,20 +15,22 @@ export class MessagesController {
     @Get('/:id')
     findOne(@Param() id: any) {
 
-        return this.messageService.get_id(id);
+        return this.messageService.getId(id);
     }
 
     @Post('/')
     create(@Body() body: any) {
-        return body;
+        return this.messageService.postMessage(body);
     }
 
     @Patch('/:id')
-    update(@Param() id: string, @Body() body: any) {
-        return {
-            id, 
-            ...body
-        }
+    update(@Param("id") id: number, @Body() body: any) {
+        return this.messageService.patchMenssage(id, body)
+    }
+
+    @Delete('/:id')
+    delete(@Param('id') id: number) {
+        return this.messageService.deleteMessage(id)
     }
 }
 

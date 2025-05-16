@@ -1,0 +1,28 @@
+@baseURL = http://localhost:3000
+
+### GET
+
+# @name Requets
+GET {{baseURL}}/messages/
+
+### id
+GET {{baseURL}}/messages/5
+
+###
+POST {{baseURL}}/messages
+Content-Type: application/json
+
+{
+    "message": "hello word" 
+}
+
+###
+PATCH {{baseURL}}/messages/3
+Content-Type: application/json
+
+{
+    "message": "test"
+}
+
+###
+DELETE {{baseURL}}/messages/4
