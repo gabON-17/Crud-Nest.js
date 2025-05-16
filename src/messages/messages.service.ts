@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { isDataView } from 'util/types';
 
 @Injectable()
 export class MessagesService {
@@ -6,7 +7,7 @@ export class MessagesService {
         return 'test service message'
     }
 
-    get_id(id): string {
-        return  `Id pego é ${id}`
+    get_id(id: object): object {
+        return id["id"]
     }
 }
